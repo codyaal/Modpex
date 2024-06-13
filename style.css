@@ -1,0 +1,285 @@
+:root {
+    --dark-primary-color: #353535;
+    --dark-accent-color: #00ffab;
+    --dark-back-ground-color: #202020;
+    --dark-side-bar-color: #2b2b2b;
+    --dark-border-color: #404040;
+    --dark-font-color: #bebebe;
+    --dark-hover-color: #424242;
+    --light-primary-color: #ffffff;
+    --light-accent-color: #04d08d;
+    --light-back-ground-color: #d2d2d2;
+    --light-side-bar-color: #e5e5e5;
+    --light-border-color: #eee;
+    --light-font-color: #000000;
+    --light-hover-color: #f5f5f5;
+    --primary-color: var(--dark-primary-color);
+    --hover-color: var(--dark-hover-color);
+    --accent-color: var(--dark-accent-color);
+    --back-ground-color: var(--dark-back-ground-color);
+    --side-bar-color: var(--dark-side-bar-color);
+    --border-color: var(--dark-border-color);
+    --font-color: var(--dark-font-color);
+    --font-size: 2vh;
+    --icon-size: 3vh;
+    --gray: #979797;
+  }
+  
+  :root[light] {
+    --primary-color: var(--light-primary-color);
+    --hover-color: var(--light-hover-color);
+    --accent-color: var(--light-accent-color);
+    --back-ground-color: var(--light-back-ground-color);
+    --side-bar-color: var(--light-side-bar-color);
+    --border-color: var(--light-border-color);
+    --font-color: var(--light-font-color);
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .icon {
+    position: absolute;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    stroke: var(--gray);
+    fill: var(--gray);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .collapse {
+    visibility: collapse;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 10vh;
+    border-bottom: 0.1vh solid var(--border-color);
+    text-align: center;
+    font-size: var(--font-size);
+    font-family: sans-serif;
+    color: var(--accent-color);
+    background-color: var(--primary-color);
+  }
+  
+  .theme-switcher-label {
+    position: absolute;
+    right: 2vh;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    cursor: pointer;
+  }
+  .theme-switcher-label:hover {
+    opacity: 0.7;
+  }
+  
+  .side-bar-toggle-label {
+    position: absolute;
+    left: 2vh;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    cursor: pointer;
+  }
+  .side-bar-toggle-label:hover {
+    opacity: 0.7;
+  }
+  
+  #app {
+    display: flex;
+    height: 90vh;
+    width: 100vw;
+  }
+  
+  #work-space {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--back-ground-color);
+  }
+  #work-space[fullScreen] {
+    width: 100%;
+  }
+  
+
+  #original-image {
+    margin: auto;
+    width: 40%;
+    height: 75%;
+    white-space: break-spaces;
+    color: var(--font-color);
+    background-color: var(--primary-color);
+  }
+
+  #current-image {
+    margin: auto;
+    width: 40%;
+    height: 75%;
+    white-space: break-spaces;
+    color: var(--font-color);
+    background-color: var(--primary-color);
+  }
+  
+  #sideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    min-width: 25vh;
+    height: 100%;
+    background-color: var(--side-bar-color);
+  }
+  #sideBar[collapse] {
+    display: none;
+  }
+  
+  .toolTitleBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    padding-left: 1vh;
+    color: var(--font-color);
+    font-family: sans-serif;
+    font-size: var(--font-size);
+    border-bottom: 0.1vh solid var(--border-color);
+    background-color: var(--primary-color);
+  }
+
+  .collapsible:after{
+    content: "+";
+    float: right;
+    margin-left: auto;
+    margin-right: 2vh;
+    font-family: monospace;
+    font-size: 2vh;
+  }
+  .active-title, .collapsible:hover{
+    background-color: var(--hover-color);
+  }
+  .active-title:after{
+    content: "-";
+    float: right;
+    font-family: monospace;
+    font-size: 2.5vh;
+  }
+
+  .collapsible-content {
+    /* display: none; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  
+  
+  .buttonStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 0 1vh;
+    height: 3vh;
+    margin: 2vh 0vh;
+    border-radius: 0.5vh;
+    font-family: sans-serif;
+    font-size: var(--font-size);
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--accent-color);
+  }
+  .buttonStyle:hover {
+    background-color: #00c483;
+  }
+  .buttonStyle.submit {
+    display: none;
+  }
+  
+  #resolutionRange {
+    appearance: none;
+    width: 75%;
+    height: 0.3vh;
+    margin: 2vh 0vh;
+    border: 0.3vh solid var(--gray);
+    border-radius: 100vh;
+    background-color: transparent;
+  }
+  #resolutionRange:focus-visible {
+    outline: none;
+  }
+  #resolutionRange::-webkit-slider-thumb {
+    appearance: none;
+    height: 2vh;
+    width: 2vh;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--accent-color);
+  }
+  #resolutionRange::-webkit-slider-thumb:hover {
+    background-color: #00c483;
+  }
+  #resolutionRange::-moz-range-thumb {
+    appearance: none;
+    height: 2vh;
+    width: 2vh;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: var(--accent-color);
+  }
+  #resolutionRange::-moz-range-thumb:hover {
+    background-color: #00c483;
+  }
+  
+  #asciiShadesInput {
+    width: 75%;
+    height: 2.5vh;
+    margin: 2vh 0vh;
+    font-size: var(--font-size);
+    color: var(--font-color);
+    border: 0.1vh solid var(--border-color);
+    border-radius: 0.5vh;
+    background-color: var(--back-ground-color);
+  }
+  #asciiShadesInput:hover,
+  #asciiShadesInput:focus-visible {
+    border: 0.2vh solid var(--accent-color);
+    outline: none;
+  }
+  #asciiShadesInput::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+  
+  @media (max-width: 480px) {
+    #sideBar {
+      position: absolute;
+      width: 100vw;
+    }
+  
+    .buttonStyle.submit {
+      display: flex;
+      margin-top: 0;
+    }
+  }
+  
+  @media (orientation: portrait) {
+    #drawingBoard {
+      width: 75%;
+      height: 60%;
+    }
+  }

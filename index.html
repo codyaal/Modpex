@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modpex</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="helpers.js" defer></script>
+    <script src="edgeDetection.js" defer></script>
+    <script src="filters.js" defer></script>
+    <script src="ui_functions.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Modpex</h1>
+
+      <label class="theme-switcher-label">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon"
+        >
+          <circle cx="12" cy="12" r="5" fill="var(--gray)"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="var(--gray)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon collapse"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+
+        <button id="theme-switcher" hidden></button>
+      </label>
+
+      <label class="side-bar-toggle-label">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon collapse"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon"
+        >
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="6" y1="18" x2="18" y2="6"></line>
+        </svg>
+
+        <button id="side-bar-toggle" hidden></button>
+      </label>
+    </header>
+
+    <div id="app">
+      <div id="sideBar">
+        <div class="toolTitleBar collapsible">Image upload:</div>
+        <div class="collapsible-content">
+          <label for="imageInput" class="buttonStyle"> upload </label>
+          <input type="file" id="imageInput" accept="image/*" hidden />
+          <label for="side-bar-toggle" class="buttonStyle submit">submit</label>
+        </div>
+
+        <div class="toolTitleBar collapsible">Apply filters:</div>
+        <div class="collapsible-content"> filters list</div>
+        <div class="toolTitleBar collapsible">Edge detection:</div>
+        <div class="collapsible-content"> Edge detection functions</div>
+
+        
+      </div>
+      
+      <div id="work-space">
+        <canvas id="original-image">
+        </canvas>
+        <canvas id="current-image">
+        </canvas>
+      </div>
+    </div>
+  </body>
+</html>
