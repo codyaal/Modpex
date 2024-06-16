@@ -9,6 +9,7 @@
     <script src="helpers.js" defer></script>
     <script src="edgeDetection.js" defer></script>
     <script src="filters.js" defer></script>
+    <script src="effects.js" defer></script>
     <script src="ui_functions.js" defer></script>
     <script src="main.js" defer></script>
   </head>
@@ -88,17 +89,40 @@
 
     <div id="app">
       <div id="sideBar">
-        <div class="toolTitleBar collapsible">Image upload:</div>
+        <div class="toolTitleBar collapsible">Image:</div>
         <div class="collapsible-content">
           <label for="imageInput" class="buttonStyle"> upload </label>
           <input type="file" id="imageInput" accept="image/*" hidden />
+          <div id="apply" class="buttonStyle"> apply </div>
+          
           <label for="side-bar-toggle" class="buttonStyle submit">submit</label>
         </div>
 
-        <div class="toolTitleBar collapsible">Apply filters:</div>
-        <div class="collapsible-content"> filters list</div>
+        <div class="toolTitleBar collapsible">Effects:</div>
+        <div id="effects" class="collapsible-content"> 
+          <label>
+            <input type="radio" id="grayscale" name="effects" value="grayscale">
+            Grayscale
+          </label><br>
+          <label>
+            <input type="radio" id="noise" name="effects" value="noise">
+            Noise
+          </label><br>
+          <label>
+            <input type="radio" id="inverted" name="effects" value="inverted">
+            Inverted
+          </label><br>
+          <label>
+            <input type="radio" id="sepia" name="effects" value="sepia">
+            Sepia
+          </label><br>
+
+
+        </div>
+        <div class="toolTitleBar collapsible">Filters:</div>
+        <div class="collapsible-content"> Under construction ... </div>
         <div class="toolTitleBar collapsible">Edge detection:</div>
-        <div class="collapsible-content"> Edge detection functions</div>
+        <div class="collapsible-content"> Under construction ... </div>
 
         
       </div>

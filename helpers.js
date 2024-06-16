@@ -18,3 +18,40 @@ function getImageURL(imageData, canvas, ctx){
     let imURL = canvas.toDataURL("image/jpeg", 1);
     return imURL;
 }
+
+// tried this function that scales the image to fit canvas dimensions
+// and then draw it, but it doesn't work for some reason.
+function scaleAndDraw(image, canvas, ctx){
+    let aspectRatio = image.naturalWidth / image.naturalHeight;
+    let width = 0;
+    let height = 0;
+    let offSetX = 0;
+    let offSetY = 0;
+  
+    if(aspectRatio >= 1){
+      width = image.naturalWidth > canvas.width ? canvas.width : image.naturalWidth;
+      height = Math.round(width / aspectRatio);
+    }
+    else {
+      height= image.naturalHeight > canvas.height ? canvas.height : image.naturalHeight;
+      width = Math.round(height * aspectRatio);
+    }
+  
+    offSetX = width < canvas.width ? (canvas.width - width) / 2 : 0;
+    offSetY = height < canvas.height ? (canvas.height - height) / 2 : 0;
+  
+    ctx.drawImage(image, offSetX, offSetY,  width, height);
+  
+    console.log(`offSetX = ${offSetX}, offSetY = ${offSetY}, width = ${width}, height = ${width}, aspectRatio = ${aspectRatio}`);
+  
+  }
+
+// this is the alternative of the previous function for scaling the image and drawing it
+// on canvas through the canvas element's style (CSS background properties)
+function drawOnCanvas(canvas, url) {
+    canvas.style.background = `url("${url}")`;
+    canvas.style.backgroundSize = 'contain';
+    canvas.style.backgroundPositionX = 'center';
+    canvas.style.backgroundPositionY = 'center';
+    canvas.style.backgroundRepeat = 'no-repeat';
+}

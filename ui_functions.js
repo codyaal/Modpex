@@ -36,40 +36,38 @@ function initCollapsibles(){
     }
 }
 
-// another method of scaling the image and drawing it on canvas through
-// the canvas element's style (CSS background properties)
-function drawOnCanvas(canvas, url) {
-    canvas.style.background = `url("${url}")`;
-    canvas.style.backgroundSize = 'contain';
-    canvas.style.backgroundPositionX = 'center';
-    canvas.style.backgroundPositionY = 'center';
-    canvas.style.backgroundRepeat = 'no-repeat';
-}
-
-
-// tried this function that scales the image to fit canvas dimensions
-// and then draw it on the canvas, but it doesn't work for some reason.
-function scaleAndDraw(image){
-    let aspectRatio = image.naturalWidth / image.naturalHeight;
-    let width = 0;
-    let height = 0;
-    let offSetX = 0;
-    let offSetY = 0;
-  
-    if(aspectRatio >= 1){
-      width = image.naturalWidth > ogcanvas.width ? ogcanvas.width : image.naturalWidth;
-      height = Math.round(width / aspectRatio);
+const effectSelected = (event, ogImageData, canvasObj, canvas) => {
+  let imObj;
+  if(event.target && event.target.matches("input[type='radio']") && !event.target.classList.contains("applied-effect")){
+    let appliedEffect = document.getElementsByClassName("applied-effect");
+    switch (event.target.value) {
+      case "grayscale":
+        imObj = grayScale(ogImageData, canvasObj);
+        drawOnCanvas(canvas, imObj.imURL);
+        if (appliedEffect.length) appliedEffect['0'].classList.toggle("applied-effect");
+        event.target.classList.toggle("applied-effect");
+        break;
+      case "noise":
+        imObj = imnoise(ogImageData, canvasObj);
+        drawOnCanvas(canvas, imObj.imURL);
+        if (appliedEffect) appliedEffect['0'].classList.toggle("applied-effect");
+        event.target.classList.toggle("applied-effect");
+        break;
+      case "inverted":
+        imObj = inverted(ogImageData, canvasObj);
+        drawOnCanvas(canvas, imObj.imURL);
+        if (appliedEffect.length) appliedEffect['0'].classList.toggle("applied-effect");
+        event.target.classList.toggle("applied-effect");
+        break;
+      case "sepia":
+        imObj = sepia(ogImageData, canvasObj);
+        drawOnCanvas(canvas, imObj.imURL);
+        if (appliedEffect.length) appliedEffect['0'].classList.toggle("applied-effect");
+        event.target.classList.toggle("applied-effect");
+        break;
+      default:
+        break;
     }
-    else {
-      height= image.naturalHeight > ogcanvas.height ? ogcanvas.height : image.naturalHeight;
-      width = Math.round(height * aspectRatio);
-    }
-  
-    offSetX = width < ogcanvas.width ? (ogcanvas.width - width) / 2 : 0;
-    offSetY = height < ogcanvas.height ? (ogcanvas.height - height) / 2 : 0;
-  
-    ogctx.drawImage(image, offSetX, offSetY,  width, height);
-  
-    console.log(`offSetX = ${offSetX}, offSetY = ${offSetY}, width = ${width}, height = ${width}, aspectRatio = ${aspectRatio}`);
-  
   }
+  return imObj;
+}
