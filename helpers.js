@@ -55,3 +55,22 @@ function drawOnCanvas(canvas, url) {
     canvas.style.backgroundPositionY = 'center';
     canvas.style.backgroundRepeat = 'no-repeat';
 }
+
+
+//this function turns a 1D array into a 2D array inorder to make it easier to write image processing algorithms
+//when using this keep in mind RGBA encoding, so the actual size of a row (the width parameter) is the width of the image
+// multiplied by 4: width = image.width * 4
+function to2DArray(array, width){
+  let sub_array = [];
+  let new_array = [];
+
+  array.forEach((element, index) => {
+    sub_array.push(element);
+    if((index+1)%width == 0){
+      new_array.push(sub_array);
+      sub_array = [];
+    }
+  });
+
+  return new_array;
+}

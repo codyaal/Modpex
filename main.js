@@ -29,7 +29,8 @@ IMAGEINPUT.onchange = () => {
     canvasObj = getCTX(image);
     ogImageData = imRead(image, canvasObj.ctx);
     newImageData = structuredClone(ogImageData);
-    // console.log(typeof imageData);
+    let imageData2D = to2DArray(ogImageData.data, ogImageData.width*4);
+    console.log(imageData2D);
     drawOnCanvas(OG_CANVAS, url);
     //this line resets the current image canvas when new image is loaded
     CANVAS.style.background = "";
