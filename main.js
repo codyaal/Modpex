@@ -8,6 +8,7 @@ const CANVAS = document.getElementById("current-image");
 
 let image;
 let ogImageData;
+let ogImageData2D;
 let newImageData;
 let canvasObj;
 
@@ -29,12 +30,12 @@ IMAGEINPUT.onchange = () => {
     canvasObj = getCTX(image);
     ogImageData = imRead(image, canvasObj.ctx);
     newImageData = structuredClone(ogImageData);
-    let imageData2D = to2DArray(ogImageData.data, ogImageData.width*4);
-    console.log(imageData2D);
+    ogImageData2D = to2DArray(ogImageData.data, ogImageData.width*4);
+    console.log(ogImageData2D);
     drawOnCanvas(OG_CANVAS, url);
     //this line resets the current image canvas when new image is loaded
     CANVAS.style.background = "";
-    // drawOnCanvas(CANVAS, averagingFilter(imageData, canvasObj,9));
+    drawOnCanvas(CANVAS, averagingFilter(ogImageData, ogImageData2D, canvasObj, 9).imURL);
     // drawOnCanvas(CANVAS, imnoise(imageData, canvasObj));
   };
 };

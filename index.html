@@ -99,7 +99,7 @@
         </div>
 
         <div class="toolTitleBar collapsible">Effects:</div>
-        <div id="effects" class="collapsible-content"> 
+        <div id="effects" class="collapsible-content text-style"> 
           <label>
             <input type="radio" id="grayscale" name="effects" value="grayscale">
             Grayscale
@@ -119,7 +119,14 @@
 
 
         </div>
-        <div class="toolTitleBar collapsible">Filters:</div>
+        <div class="toolTitleBar collapsible">Averaging Filter:</div>
+        <div id="avg_filter" class="collapsible-content" style="width: 100%;"> 
+          
+            <input class="range-style" type="range" id="avg_filter_size" min="3" max="64" value="3" step="1">
+            <div id="apply_avg" class="buttonStyle" style="width: fit-content;"> apply </div>
+            <div id="reset_avg" class="buttonStyle" style="width: fit-content;"> clear </div>
+
+        </div>
         <div class="collapsible-content"> Under construction ... </div>
         <div class="toolTitleBar collapsible">Edge detection:</div>
         <div class="collapsible-content"> Under construction ... </div>

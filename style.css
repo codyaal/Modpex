@@ -103,7 +103,7 @@
     width: 100vw;
   }
 
-  #effects {
+  .text-style {
     color: var(--font-color);
     font-size: var(--font-size);
     font-family: sans-serif;
@@ -216,19 +216,19 @@
     display: none;
   }
   
-  #resolutionRange {
+  .range-style {
     appearance: none;
-    width: 75%;
+    width: 80%;
     height: 0.3vh;
-    margin: 2vh 0vh;
+    margin: 2vh;
     border: 0.3vh solid var(--gray);
     border-radius: 100vh;
     background-color: transparent;
   }
-  #resolutionRange:focus-visible {
+  .range-style:focus-visible {
     outline: none;
   }
-  #resolutionRange::-webkit-slider-thumb {
+  .range-style::-webkit-slider-thumb {
     appearance: none;
     height: 2vh;
     width: 2vh;
@@ -236,10 +236,10 @@
     cursor: pointer;
     background-color: var(--accent-color);
   }
-  #resolutionRange::-webkit-slider-thumb:hover {
+  .range-style::-webkit-slider-thumb:hover {
     background-color: #00c483;
   }
-  #resolutionRange::-moz-range-thumb {
+  .range-style::-moz-range-thumb {
     appearance: none;
     height: 2vh;
     width: 2vh;
@@ -248,7 +248,7 @@
     cursor: pointer;
     background-color: var(--accent-color);
   }
-  #resolutionRange::-moz-range-thumb:hover {
+  .range-style::-moz-range-thumb:hover {
     background-color: #00c483;
   }
   
