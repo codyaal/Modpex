@@ -3,6 +3,7 @@ const SIDEBARTOGGLE = document.getElementById("side-bar-toggle");
 const IMAGEINPUT = document.getElementById("imageInput");
 const APPLY = document.getElementById("apply");
 const EFFECTS = document.getElementById("effects");
+const AVG_FILTER = document.getElementById("avg_filter");
 const OG_CANVAS = document.getElementById("original-image");
 const CANVAS = document.getElementById("current-image");
 
@@ -35,14 +36,14 @@ IMAGEINPUT.onchange = () => {
     drawOnCanvas(OG_CANVAS, url);
     //this line resets the current image canvas when new image is loaded
     CANVAS.style.background = "";
-    drawOnCanvas(CANVAS, averagingFilter(ogImageData, ogImageData2D, canvasObj, 9).imURL);
-    // drawOnCanvas(CANVAS, imnoise(imageData, canvasObj));
+    // drawOnCanvas(CANVAS, averagingFilter(ogImageData, ogImageData2D, canvasObj, 15).imURL);
   };
 };
 
 APPLY.onclick = () => {
   if(CANVAS.style.background == "") return;
   ogImageData = structuredClone(newImageData);
+  ogImageData2D = to2DArray(ogImageData.data, ogImageData.width*4);
   OG_CANVAS.style.background = CANVAS.style.background;
   CANVAS.style.background = "";
 };
@@ -51,3 +52,9 @@ EFFECTS.onclick = (e) => {
   let imgObj = effectSelected(e ,ogImageData, canvasObj, CANVAS);
   if(imgObj) newImageData = structuredClone(imgObj.imageData);
 };
+
+AVG_FILTER.onclick = (e) => {
+  let imgObj = avgKernelSelected(e ,ogImageData, ogImageData2D, canvasObj, CANVAS);
+  if(imgObj) newImageData = structuredClone(imgObj.imageData);
+};
+

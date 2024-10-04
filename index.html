@@ -120,14 +120,36 @@
 
         </div>
         <div class="toolTitleBar collapsible">Averaging Filter:</div>
-        <div id="avg_filter" class="collapsible-content" style="width: 100%;"> 
-          
-            <input class="range-style" type="range" id="avg_filter_size" min="3" max="64" value="3" step="1">
-            <div id="apply_avg" class="buttonStyle" style="width: fit-content;"> apply </div>
-            <div id="reset_avg" class="buttonStyle" style="width: fit-content;"> clear </div>
-
+        <div id="avg_filter" class="collapsible-content text-style"> 
+          <label>
+            <input type="radio" id="3x3" name="avg_filter_kernel" value="3">
+            3x3
+          </label><br>
+          <label>
+            <input type="radio" id="5x5" name="avg_filter_kernel" value="5">
+            5x5
+          </label><br>
+          <label>
+            <input type="radio" id="7x7" name="avg_filter_kernel" value="7">
+            7x7
+          </label><br>
+          <label>
+            <input type="radio" id="9x9" name="avg_filter_kernel" value="9">
+            9x9
+          </label><br>
+          <label>
+            <input type="radio" id="11x11" name="avg_filter_kernel" value="11">
+            11x11
+          </label><br>
+          <label>
+            <input type="radio" id="11x11" name="avg_filter_kernel" value="13">
+            13x13
+          </label><br>
+          <label>
+            <input type="radio" id="11x11" name="avg_filter_kernel" value="15">
+            15x15
+          </label><br>
         </div>
-        <div class="collapsible-content"> Under construction ... </div>
         <div class="toolTitleBar collapsible">Edge detection:</div>
         <div class="collapsible-content"> Under construction ... </div>
 

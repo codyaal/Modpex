@@ -50,7 +50,7 @@ const effectSelected = (event, ogImageData, canvasObj, canvas) => {
       case "noise":
         imObj = imnoise(ogImageData, canvasObj);
         drawOnCanvas(canvas, imObj.imURL);
-        if (appliedEffect) appliedEffect['0'].classList.toggle("applied-effect");
+        if (appliedEffect.length) appliedEffect['0'].classList.toggle("applied-effect");
         event.target.classList.toggle("applied-effect");
         break;
       case "inverted":
@@ -68,6 +68,20 @@ const effectSelected = (event, ogImageData, canvasObj, canvas) => {
       default:
         break;
     }
+  }
+  return imObj;
+}
+
+const avgKernelSelected = (event, ogImageData, ogImageData2D, canvasObj, canvas) => {
+  let imObj;
+  if(event.target && event.target.matches("input[type='radio']") && !event.target.classList.contains("applied-kernel")){
+    let appliedKernel = document.getElementsByClassName("applied-kernel");
+
+    imObj = averagingFilter(ogImageData, ogImageData2D, canvasObj, parseInt(event.target.value));
+    drawOnCanvas(canvas, imObj.imURL);
+    if (appliedKernel.length) appliedKernel['0'].classList.toggle("applied-kernel");
+    event.target.classList.toggle("applied-kernel");
+
   }
   return imObj;
 }
