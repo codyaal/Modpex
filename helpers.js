@@ -74,3 +74,16 @@ function to2DArray(array, width){
 
   return new_array;
 }
+
+function median(array){
+  let median = 0;
+  let center = array.length/2;
+  array.sort((a, b) => {return a-b});
+  if(array.length%2 == 0){
+    median = (array[center-1]+array[center])/2;
+  }
+  else{
+    median = array[Math.floor(center)];
+  }
+  return median;
+}

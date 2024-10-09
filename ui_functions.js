@@ -74,13 +74,27 @@ const effectSelected = (event, ogImageData, canvasObj, canvas) => {
 
 const avgKernelSelected = (event, ogImageData, ogImageData2D, canvasObj, canvas) => {
   let imObj;
-  if(event.target && event.target.matches("input[type='radio']") && !event.target.classList.contains("applied-kernel")){
-    let appliedKernel = document.getElementsByClassName("applied-kernel");
+  if(event.target && event.target.matches("input[type='radio']") && !event.target.classList.contains("applied-avg-kernel")){
+    let appliedKernel = document.getElementsByClassName("applied-avg-kernel");
 
     imObj = averagingFilter(ogImageData, ogImageData2D, canvasObj, parseInt(event.target.value));
     drawOnCanvas(canvas, imObj.imURL);
-    if (appliedKernel.length) appliedKernel['0'].classList.toggle("applied-kernel");
-    event.target.classList.toggle("applied-kernel");
+    if (appliedKernel.length) appliedKernel['0'].classList.toggle("applied-avg-kernel");
+    event.target.classList.toggle("applied-avg-kernel");
+
+  }
+  return imObj;
+}
+
+const medianKernelSelected = (event, ogImageData, ogImageData2D, canvasObj, canvas) => {
+  let imObj;
+  if(event.target && event.target.matches("input[type='radio']") && !event.target.classList.contains("applied-median-kernel")){
+    let appliedKernel = document.getElementsByClassName("applied-median-kernel");
+
+    imObj = medianFilter(ogImageData, ogImageData2D, canvasObj, parseInt(event.target.value));
+    drawOnCanvas(canvas, imObj.imURL);
+    if (appliedKernel.length) appliedKernel['0'].classList.toggle("applied-median-kernel");
+    event.target.classList.toggle("applied-median-kernel");
 
   }
   return imObj;

@@ -4,6 +4,7 @@ const IMAGEINPUT = document.getElementById("imageInput");
 const APPLY = document.getElementById("apply");
 const EFFECTS = document.getElementById("effects");
 const AVG_FILTER = document.getElementById("avg_filter");
+const MEDIAN_FILTER = document.getElementById("median_filter");
 const OG_CANVAS = document.getElementById("original-image");
 const CANVAS = document.getElementById("current-image");
 
@@ -55,6 +56,11 @@ EFFECTS.onclick = (e) => {
 
 AVG_FILTER.onclick = (e) => {
   let imgObj = avgKernelSelected(e ,ogImageData, ogImageData2D, canvasObj, CANVAS);
+  if(imgObj) newImageData = structuredClone(imgObj.imageData);
+};
+
+MEDIAN_FILTER.onclick = (e) => {
+  let imgObj = medianKernelSelected(e ,ogImageData, ogImageData2D, canvasObj, CANVAS);
   if(imgObj) newImageData = structuredClone(imgObj.imageData);
 };
 
